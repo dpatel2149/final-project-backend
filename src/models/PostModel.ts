@@ -6,3 +6,4 @@ const PostSchema = new mongoose.Schema({
 });
 
 export const PostModel = mongoose.model("Post", PostSchema);
+// Project structure organized
