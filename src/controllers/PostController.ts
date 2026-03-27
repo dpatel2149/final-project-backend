@@ -11,3 +11,4 @@ export const getPosts = async (req: Request, res: Response) => {
   const posts = await PostModel.find();
   res.json(posts);
 };
+// GET API for posts working
