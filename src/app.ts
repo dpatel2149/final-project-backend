@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import postRoutes from "./routes/postRoutes";
+import authRoutes from "./routes/authRoutes";
 
 export const app = express();
 
@@ -10,3 +11,4 @@ app.get("/", (req: Request, res: Response) => {
 });
 
 app.use("/api/posts", postRoutes);
+app.use("/api/auth", authRoutes);
