@@ -32,11 +32,8 @@ export const getPosts = async (req: Request, res: Response) => {
 // UPDATE POST
 export const updatePost = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const id = String(req.params.id).trim();
     const { title, content } = req.body;
-
-    console.log("Updating post with id:", id);
-    console.log("Request body:", req.body);
 
     const updatedPost = await PostModel.findByIdAndUpdate(
       id,
@@ -52,5 +49,23 @@ export const updatePost = async (req: Request, res: Response) => {
   } catch (error) {
     console.log("Update post error:", error);
     res.status(500).json({ message: "Error updating post" });
+  }
+};
+
+// DELETE POST
+export const deletePost = async (req: Request, res: Response) => {
+  try {
+    const id = String(req.params.id).trim();
+
+    const deletedPost = await PostModel.findByIdAndDelete(id);
+
+    if (!deletedPost) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    res.json({ message: "Post deleted successfully" });
+  } catch (error) {
+    console.log("Delete post error:", error);
+    res.status(500).json({ message: "Error deleting post" });
   }
 };
