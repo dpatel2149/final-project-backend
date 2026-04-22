@@ -1,9 +1,11 @@
 import express, { Request, Response } from "express";
 import postRoutes from "./routes/postRoutes";
 import authRoutes from "./routes/authRoutes";
+import { logger } from "./middleware/logger";
 
 export const app = express();
 
+app.use(logger);
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
