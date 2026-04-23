@@ -1,11 +1,10 @@
 import express, { Request, Response } from "express";
 import postRoutes from "./routes/postRoutes";
 import authRoutes from "./routes/authRoutes";
-import { logger } from "./middleware/logger";
+import adminRoutes from "./routes/adminRoutes";
 
 export const app = express();
 
-app.use(logger);
 app.use(express.json());
 
 app.get("/", (req: Request, res: Response) => {
@@ -14,3 +13,4 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/api/posts", postRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
