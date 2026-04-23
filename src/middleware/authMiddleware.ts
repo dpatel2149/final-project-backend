@@ -25,6 +25,7 @@ export const verifyToken = (
     }
 
     const token = authHeader.split(" ")[1];
+
     const decoded = jwt.verify(token, process.env.JWT_SECRET) as {
       userId: string;
       role: string;
@@ -35,4 +36,16 @@ export const verifyToken = (
   } catch (error) {
     res.status(401).json({ message: "Invalid or expired token" });
   }
+};
+
+export const verifyAdmin = (
+  req: AuthRequest,
+  res: Response,
+  next: NextFunction
+) => {
+  if (!req.user || req.user.role !== "admin") {
+    return res.status(403).json({ message: "Admin access required" });
+  }
+
+  next();
 };
