@@ -69,3 +69,26 @@ export const deletePost = async (req: Request, res: Response) => {
     res.status(500).json({ message: "Error deleting post" });
   }
 };
+// LIKE POST
+export const likePost = async (req: Request, res: Response) => {
+  try {
+    const id = String(req.params.id).trim();
+
+    const post = await PostModel.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    post.likes = (post.likes || 0) + 1;
+    await post.save();
+
+    res.json({
+      message: "Post liked successfully",
+      likes: post.likes
+    });
+  } catch (error) {
+    console.log("Like post error:", error);
+    res.status(500).json({ message: "Error liking post" });
+  }
+};

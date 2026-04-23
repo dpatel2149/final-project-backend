@@ -1,9 +1,18 @@
 import mongoose from "mongoose";
 
 const PostSchema = new mongoose.Schema({
-  title: String,
-  content: String,
+  title: {
+    type: String,
+    required: true
+  },
+  content: {
+    type: String,
+    required: true
+  },
+  likes: {
+    type: Number,
+    default: 0
+  }
 });
 
 export const PostModel = mongoose.model("Post", PostSchema);
-// Project structure organized
