@@ -3,7 +3,7 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "target": "esnext",
-    "types": ["node"],
+    "types": ["node", "jest"],
     "sourceMap": true,
     "declaration": false,
     "strict": false,
