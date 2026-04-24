@@ -1,0 +1,22 @@
+info:
+  name: Update Post
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: http://localhost:5000/api/posts/69eaaa0a31e9ed445015c3f1
+  body:
+    type: json
+    data: |
+      {
+        "title": "Updated Bruno test post",
+        "content": "Updated from Bruno"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,15 @@
+info:
+  name: Like Post
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: http://localhost:5000/api/posts/69eaab2f31e9ed445015c3f9/like
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

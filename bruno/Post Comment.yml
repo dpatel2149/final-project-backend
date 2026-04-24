@@ -1,0 +1,21 @@
+info:
+  name: Post Comment
+  type: http
+  seq: 15
+
+http:
+  method: POST
+  url: http://localhost:5000/api/posts/69cec780571e36303ffb4ea1/comments
+  body:
+    type: json
+    data: |
+      {
+        "text": "This is my first comment"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
